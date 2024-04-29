@@ -45,6 +45,9 @@ for place in CoordDict:
     
 print(FeatureDict)
 
+#Import the GEOSON to QGIS
+vlayer = QgsVectorLayer(r"C:\Users\Chabl\Desktop\AreaTemperatures.geojson","mygeojson","ogr")
+QgsProject.instance().addMapLayer(vlayer)
 
 regionaldata = FeatureCollection(towns)
 with open(r'C:\Users\Desktop\AreaTemperatures.geojson', 'w') as f:
