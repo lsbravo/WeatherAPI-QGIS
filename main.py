@@ -35,7 +35,7 @@ def pullForecast(PlaceName, URL):
     TownFeature = Feature(geometry=Town, properties={"Name":PlaceName,"Temperature": ExportInfo["Tonight"]})
     return TownFeature
 
-
+#This Dictionary specifies which cities to run through the weather API for forecasts
 CoordDict = {
     "Houston" : [29.752518, -95.359294],
     "Demi John" : [29.086575, -95.279697]
