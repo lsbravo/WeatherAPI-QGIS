@@ -38,7 +38,9 @@ def pullForecast(PlaceName, URL, lat, long):
 
 CoordDict = {
     "Houston" : [29.752518, -95.359294],
-    "Demi John" : [29.086575, -95.279697]
+    "Demi John" : [29.086575, -95.279697],
+    "Galveston" : [29.244812, -94.863943],
+    "West Columbia": [29.138071, -95.643840]
 }
 
 FeatureDict = {}
