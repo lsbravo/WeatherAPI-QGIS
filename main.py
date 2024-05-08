@@ -9,7 +9,7 @@ from geojson import Feature, Point, FeatureCollection, dump
 def FileName():
     filepath = os.getcwd()
     currentDateAndTime = datetime.now()
-    name = "AreaTemp-"+str(currentDateAndTime.year)+str(currentDateAndTime.month) + str(currentDateAndTime.day)+".json"
+    name = "AreaTemp-"+str(currentDateAndTime.year)+str(currentDateAndTime.month) + str(currentDateAndTime.day)+".geojson"
     geojsonFile = os.path.join(filepath,name)
     return geojsonFile
 
