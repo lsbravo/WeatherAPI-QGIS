@@ -21,7 +21,7 @@ def pullURLfromCoords(x,y):
     return GridURL
 
 #Function to pull the forecast from the grid and return as a feature a town
-def pullForecast(PlaceName, URL):
+def pullForecast(PlaceName, URL, lat, long):
     response =  requests.get(URL) 
     WeeklyData = response.json()
     WeeklyData["properties"]["updated"]
@@ -31,11 +31,11 @@ def pullForecast(PlaceName, URL):
     for x in Details:
         date = x['name']    
         ExportInfo[date] = x['temperature']
-    Town = Point((29.086575, -95.279697))
+    Town = Point((long, lat))
     TownFeature = Feature(geometry=Town, properties={"Name":PlaceName,"Temperature": ExportInfo["Tonight"]})
     return TownFeature
 
-#This Dictionary specifies which cities to run through the weather API for forecasts
+
 CoordDict = {
     "Houston" : [29.752518, -95.359294],
     "Demi John" : [29.086575, -95.279697]
@@ -46,16 +46,16 @@ towns=[]
 
 for place in CoordDict:
     ForecastURL = pullURLfromCoords(CoordDict[place][0], CoordDict[place][1])
-    featuredata = pullForecast(place, ForecastURL)
+    featuredata = pullForecast(place, ForecastURL, CoordDict[place][0], CoordDict[place][1])
     FeatureDict[place] = featuredata
     towns.append(featuredata)
+    
 
 geoFile = FileName()
 regionaldata = FeatureCollection(towns)
 
 with open(geoFile, 'w') as f:
     dump(regionaldata,f)
-
 
 #THIS LINE IS SPECIFICALLY FOR USE WITHIN QGIS
 #Import the GEOSON to QGIS
