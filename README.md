@@ -1,4 +1,4 @@
-# Pulling Temperatures from National Weather Service API
+# National Weather Service Temperatures from Coordinates
 
 Python script to pull temperatures based on coordinates stored in a dictionary. A json file is returned formatted as geojson for easy visualization.
 
